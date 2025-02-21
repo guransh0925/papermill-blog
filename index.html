@@ -1,2 +1,74 @@
-<h2>Introduction</h2>
-<p>In the world of data science and automation, <strong>Papermill</strong> is a powerful tool that allows users to parameterize and execute Jupyter Notebooks. Whether you're working with <strong>data pipelines, experiment tracking, or automated reporting</strong>, Papermill simplifies repetitive tasks and ensures reproducibility in data workflows.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: "Cascadia Code", monospace;
+            color: #11611d;
+        }
+    </style>
+    <title>Automating Jupyter Notebooks with Papermill</title>
+</head>
+<body>
+    <h1>Automating Jupyter Notebooks with Papermill</h1>
+    <h2>Introduction</h2>
+    <p>In the world of data science and automation, running Jupyter Notebooks manually can be repetitive and time-consuming, especially when working with different datasets or parameters. This is where <strong>Papermill</strong> comes in!
+    <p>Papermill is an open-source Python library that allows you to:</p>
+    <ul> 
+        <li> Parameterize Jupyter Notebooks (pass different values without editing the code).</li>
+        <li> Execute Notebooks programmatically (automate repetitive tasks).</li>
+        <li> Track and log executions (useful for debugging and reproducibility).</li>
+    </ul>    
+    <p>With Papermill, you can efficiently run the same notebook multiple times with different inputs, making it a powerful tool for data pipelines, automated reporting, and machine learning workflows.</p>
+
+    
+
+    <h2>Installation & Setup of Papermill</h2>
+    
+    <h3>Install Papermill using pip</h3>
+    <p>Papermill is a Python library, so you can install it using <code>pip</code>:</p>
+    <pre><code>pip install papermill</code></pre>
+
+    <h3>Verify the Installation</h3>
+    <p>After installation, check if Papermill is installed correctly by running:</p>
+    <pre><code>papermill --help</code></pre>
+
+    <h3>Install Jupyter Notebook (If Not Already Installed)</h3>
+    <p>Papermill works with Jupyter Notebooks, so make sure Jupyter is installed:</p>
+    <pre><code>pip install notebook</code></pre>
+
+    <h3>Running a Jupyter Notebook with Papermill</h3>
+    <p>Once installed, you can use Papermill to execute a notebook from the command line:</p>
+    <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p param_name param_value</code></pre>
+
+    <p><b>Example:</b> Running a notebook while setting a parameter:</p>
+    <pre><code>papermill my_notebook.ipynb output.ipynb -p num_epochs 10</code></pre>
+
+    <h3>Using Papermill in a Python Script</h3>
+    <p>You can also run Papermill inside a Python script:</p>
+    <pre><code>import papermill as pm
+
+pm.execute_notebook(
+    "input_notebook.ipynb",
+    "output_notebook.ipynb",
+    parameters={"num_epochs": 10, "learning_rate": 0.01}
+)</code></pre>
+
+    <p>Now you have Papermill installed and ready to use! 🎉</p>
+
+</body>
+</html>
