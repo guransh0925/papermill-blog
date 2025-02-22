@@ -39,26 +39,26 @@
 
     <h2>Installation & Setup of Papermill</h2>
     
-    <h3>Install Papermill using pip</h3>
+    <h3> 1. Install Papermill using pip</h3>
     <p>Papermill is a Python library, so you can install it using <code>pip</code>:</p>
     <pre><code>pip install papermill</code></pre>
 
-    <h3>Verify the Installation</h3>
+    <h3> 2. Verify the Installation</h3>
     <p>After installation, check if Papermill is installed correctly by running:</p>
     <pre><code>papermill --help</code></pre>
 
-    <h3>Install Jupyter Notebook (If Not Already Installed)</h3>
+    <h3> 3. Install Jupyter Notebook (If Not Already Installed)</h3>
     <p>Papermill works with Jupyter Notebooks, so make sure Jupyter is installed:</p>
     <pre><code>pip install notebook</code></pre>
 
-    <h3>Running a Jupyter Notebook with Papermill</h3>
+    <h3> 4. Running a Jupyter Notebook with Papermill</h3>
     <p>Once installed, you can use Papermill to execute a notebook from the command line:</p>
     <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p param_name param_value</code></pre>
 
     <p><b>Example:</b> Running a notebook while setting a parameter:</p>
     <pre><code>papermill my_notebook.ipynb output.ipynb -p num_epochs 10</code></pre>
 
-    <h3>Using Papermill in a Python Script</h3>
+    <h3> 5. Using Papermill in a Python Script</h3>
     <p>You can also run Papermill inside a Python script:</p>
     <pre><code>import papermill as pm
 
@@ -68,7 +68,109 @@ pm.execute_notebook(
     parameters={"num_epochs": 10, "learning_rate": 0.01}
 )</code></pre>
 
-    <p>Now you have Papermill installed and ready to use! 🎉</p>
+    <p>Now you have Papermill installed and ready to use! </p>
+    <section id="key-features">
+        <h2>Key Features & Explanation</h2>
+        <p>Papermill is a powerful tool that allows for automation and parameterization of Jupyter Notebooks. Below are its key functionalities:</p>
+    
+        <h3> 1. Parameterization of Notebooks</h3>
+        <p>Papermill allows you to <strong>pass parameters</strong> to a notebook without modifying the original file. This makes it useful for running the same notebook with different datasets or settings.</p>
+        <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p param_name param_value</code></pre>
+    
+        <h3> 2. Execution of Jupyter Notebooks</h3>
+        <p>It automates the execution of notebooks, allowing you to schedule and run them programmatically.</p>
+        <pre><code>import papermill as pm
+    
+    pm.execute_notebook(
+        "input_notebook.ipynb",
+        "output_notebook.ipynb",
+        parameters={"learning_rate": 0.01, "epochs": 10}
+    )</code></pre>
+    
+        <h3> 3. Logging & Metadata Tracking</h3>
+        <p>Papermill tracks and logs each execution, including input parameters, errors, and output. This helps in debugging and reproducibility.</p>
+        <pre><code>output_notebook.ipynb</code></pre>
+    
+        <h3> 4. Integration with Data Pipelines</h3>
+        <p>It is widely used in <strong>machine learning workflows, ETL pipelines, and automated reporting.</strong></p>
+    
+        <h3> 5. Supports Multiple Execution Environments</h3>
+        <p>You can run Papermill on <strong>local machines, cloud services (AWS, GCP, Azure), or containerized environments like Docker.</strong></p>
+    </section>
 
+    <section id="code-examples">
+        <h2>Code Examples: Working with Papermill</h2>
+        <p>Below are some practical examples of how to use Papermill for automating Jupyter Notebooks.</p>
+    
+        <h3>🔹 1. Running a Notebook with Parameters</h3>
+        <p>With Papermill, you can execute a Jupyter Notebook and pass parameters dynamically. Example:</p>
+        <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p num_epochs 10</code></pre>
+        <p>📌 **Explanation:** This command runs `input_notebook.ipynb`, saves the executed version as `output_notebook.ipynb`, and sets `num_epochs` to `10`.</p>
+    
+        <h3>🔹 2. Running Papermill in a Python Script</h3>
+        <p>You can also execute a notebook inside a Python script:</p>
+        <pre><code>import papermill as pm
+    
+    pm.execute_notebook(
+        "input_notebook.ipynb",
+        "output_notebook.ipynb",
+        parameters={"num_epochs": 10, "learning_rate": 0.01}
+    )</code></pre>
+        <p>📌 **Explanation:** This script runs `input_notebook.ipynb` and saves the output while injecting parameters like `num_epochs` and `learning_rate`.</p>
+    
+        <h3>🔹 3. Handling Errors Gracefully</h3>
+        <p>To continue execution even if a cell fails, use `--report-mode`:</p>
+        <pre><code>papermill input_notebook.ipynb output_notebook.ipynb --report-mode</code></pre>
+        <p>📌 **Explanation:** This allows execution to continue while logging errors for later analysis.</p>
+    
+        <h3>🔹 4. Storing Execution Results</h3>
+        <p>Papermill stores execution metadata inside notebooks, which can be accessed for debugging:</p>
+        <pre><code>import nbformat
+    
+    notebook = nbformat.read("output_notebook.ipynb", as_version=4)
+    print(notebook.metadata.papermill)</code></pre>
+        <p>📌 **Explanation:** This extracts and prints the execution details from the notebook metadata.</p>
+    </section>
+    
+    <section id="screenshots">
+        <h2>📸 Screenshots</h2>
+        <p>Below are some screenshots to illustrate key functionalities of Papermill.</p>
+    
+        <h3>🔹 Example: Running Papermill in Command Line</h3>
+        <img src="images/papermill-cli-example.png" alt="Running Papermill in CLI" width="80%">
+        <p>📌 This shows Papermill executing a Jupyter Notebook with parameters.</p>
+    
+        <h3>🔹 Example: Viewing Execution Metadata</h3>
+        <img src="images/papermill-metadata.png" alt="Papermill Execution Metadata" width="80%">
+        <p>📌 Papermill automatically logs execution details for tracking and debugging.</p>
+    </section>
+    
+    <section id="use-cases">
+        <h2>💡 Use Cases: Where is Papermill Useful?</h2>
+        <p>Papermill is widely used in various domains to automate Jupyter Notebooks.</p>
+        <ul>
+            <li><strong>🔹 Data Science:</strong> Running experiments with different datasets.</li>
+            <li><strong>🔹 Machine Learning:</strong> Automating hyperparameter tuning and training.</li>
+            <li><strong>🔹 Reporting & Dashboards:</strong> Generating periodic reports with new data.</li>
+            <li><strong>🔹 ETL Pipelines:</strong> Automating data extraction, transformation, and loading tasks.</li>
+            <li><strong>🔹 Cloud Deployments:</strong> Running notebooks on AWS, GCP, or Azure.</li>
+        </ul>
+    </section>
+    
+    <section id="conclusion">
+        <h2>📌 Conclusion</h2>
+        <p>Papermill is a powerful tool for automating Jupyter Notebooks by allowing parameterization, execution tracking, and integration with data pipelines.</p>
+        <p>It helps data scientists and engineers **save time, improve reproducibility, and scale workflows** efficiently.</p>
+    </section>
+    
+    <section id="references">
+        <h2>📚 References & Further Reading</h2>
+        <ul>
+            <li>📖 <a href="https://papermill.readthedocs.io/en/latest/" target="_blank">Official Papermill Documentation</a></li>
+            <li>📖 <a href="https://github.com/nteract/papermill" target="_blank">Papermill GitHub Repository</a></li>
+            <li>📖 <a href="https://towardsdatascience.com/parameterized-python-notebooks-with-papermill-620b5d2c34ce" target="_blank">Tutorial on Towards Data Science</a></li>
+        </ul>
+    </section>
+    
 </body>
 </html>
