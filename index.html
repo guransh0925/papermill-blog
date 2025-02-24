@@ -5,11 +5,35 @@
     
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            line-height: 1.6;
+    font-family: Arial, sans-serif;
+    margin: 20px; 
+    padding: 20px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+@media (min-width: 768px) {
+    body {
+        margin: 20px 100px; 
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        margin: 20px 400px; 
+    }
+}
+
+        section {
+            margin-bottom: 50px; 
         }
+
+        @media (max-width: 768px) {
+            section {
+                margin-bottom: 30px; 
+            }
+        }
+
         pre {
             background-color: #f4f4f4;
             padding: 10px;
@@ -20,11 +44,33 @@
             font-family: "Cascadia Code", monospace;
             color: #11611d;
         }
+        img {
+        width: 80%;  
+        height: auto;  
+        display: block; 
+        }
+        .author-box {
+    background-color: #f0f0f0;  /* Light gray background */
+    padding: 0px 10px;
+    border-left: 5px solid #0073e6; /* Blue accent border */
+    font-size: 16px;
+    display: inline-block; /* Keeps box size close to content */
+    margin-top: 10px; /* Space below the title */
+}
+
+
     </style>
     <title>Automating Jupyter Notebooks with Papermill</title>
 </head>
 <body>
-    <h1>Automating Jupyter Notebooks with Papermill</h1>
+    <h1><strong>Automating Jupyter Notebooks with Papermill</strong></h1>
+<section><div class="author-box">
+        <p><strong>Authors:</strong> Ayush Alhat, Guransh Saran, Himani Goel</p>
+    </div>
+    <p><strong>Date:</strong> February 25, 2025</p>    
+</section>
+
+    <section id="introduction">
     <h2>Introduction</h2>
     <p>In the world of data science and automation, running Jupyter Notebooks manually can be repetitive and time-consuming, especially when working with different datasets or parameters. This is where <strong>Papermill</strong> comes in!
     <p>Papermill is an open-source Python library that allows you to:</p>
@@ -34,31 +80,31 @@
         <li> Track and log executions (useful for debugging and reproducibility).</li>
     </ul>    
     <p>With Papermill, you can efficiently run the same notebook multiple times with different inputs, making it a powerful tool for data pipelines, automated reporting, and machine learning workflows.</p>
-
+    </section>
     
-
+    <section id="installation">
     <h2>Installation & Setup of Papermill</h2>
     
-    <h3> 1. Install Papermill using pip</h3>
+    <i><h4> 1. Install Papermill using pip</h4></i>
     <p>Papermill is a Python library, so you can install it using <code>pip</code>:</p>
     <pre><code>pip install papermill</code></pre>
-
-    <h3> 2. Verify the Installation</h3>
+    
+    <i><h4> 2. Verify the Installation</h4></i>
     <p>After installation, check if Papermill is installed correctly by running:</p>
     <pre><code>papermill --help</code></pre>
 
-    <h3> 3. Install Jupyter Notebook (If Not Already Installed)</h3>
+    <i><h4> 3. Install Jupyter Notebook (If Not Already Installed)</h4></i>
     <p>Papermill works with Jupyter Notebooks, so make sure Jupyter is installed:</p>
     <pre><code>pip install notebook</code></pre>
-
-    <h3> 4. Running a Jupyter Notebook with Papermill</h3>
+    
+    <i><h4> 4. Running a Jupyter Notebook with Papermill</h4></i>
     <p>Once installed, you can use Papermill to execute a notebook from the command line:</p>
     <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p param_name param_value</code></pre>
-
-    <p><b>Example:</b> Running a notebook while setting a parameter:</p>
+    
+    <p>Example: Running a notebook while setting a parameter</p>
     <pre><code>papermill my_notebook.ipynb output.ipynb -p num_epochs 10</code></pre>
-
-    <h3> 5. Using Papermill in a Python Script</h3>
+    
+    <i><h4> 5. Using Papermill in a Python Script</h4></i>
     <p>You can also run Papermill inside a Python script:</p>
     <pre><code>import papermill as pm
 
@@ -69,11 +115,13 @@ pm.execute_notebook(
 )</code></pre>
 
     <p>Now you have Papermill installed and ready to use! </p>
+    </section>
+
     <section id="key-features">
         <h2>Key Features</h2>
         <p>Papermill is a powerful tool that allows for automation and parameterization of Jupyter Notebooks. Below are its key functionalities:</p>
         
-        <h3>1. Parameterization of Notebooks</h3>
+        <i><h4>1. Parameterization of Notebooks</h4></i>
         <p><strong>What it does:</strong> Papermill allows users to pass parameters into a Jupyter Notebook at runtime, enabling dynamic execution with different inputs.</p>
         <p><strong>How it works:</strong> A notebook can contain a specially tagged cell (usually marked as "parameters" in Jupyter) where variables are defined. Papermill can override these variables at execution time.</p>
         <p><strong>Why it's useful:</strong></p>
@@ -89,7 +137,7 @@ beta = 0.5</code></pre>
         <p>Running the notebook with different parameters using Papermill:</p>
         <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p alpha 0.2 -p beta 0.7</code></pre>
         
-        <h3>2. Execution of Notebooks</h3>
+        <i><h4>2. Execution of Notebooks</h4></i>
         <p><strong>What it does:</strong> Papermill automates the execution of Jupyter Notebooks programmatically.</p>
         <p><strong>How it works:</strong> It runs the notebook in a clean execution environment, executing each cell sequentially from top to bottom.</p>
         <p><strong>Why it's useful:</strong></p>
@@ -101,7 +149,7 @@ beta = 0.5</code></pre>
         <p><strong>Example Usage:</strong></p>
         <pre><code>papermill input_notebook.ipynb output_notebook.ipynb</code></pre>
         
-        <h3>3. Recording Notebook Metadata</h3>
+        <i><h4>3. Recording Notebook Metadata</h4></i>
         <p><strong>What it does:</strong> Papermill records execution metadata, including runtime parameters, execution duration, and timestamps.</p>
         <p><strong>How it works:</strong> When a notebook is executed, metadata is embedded in its JSON structure. This metadata can be inspected later to track how a notebook was executed.</p>
         <p><strong>Why it's useful:</strong></p>
@@ -111,7 +159,7 @@ beta = 0.5</code></pre>
             <li>Enables logging and monitoring of notebook executions.</li>
         </ul>
 
-        <h3>4. Error Handling and Checkpointing</h3>
+        <i><h4>4. Error Handling and Checkpointing</h4></i>
         <p><strong>What it does:</strong> Papermill captures errors that occur during execution and preserves partial execution states.</p>
         <p><strong>How it works:</strong> If an error occurs, Papermill stops execution but keeps the notebook intact with executed cells up to the failure point.</p>
         <p><strong>Why it's useful:</strong></p>
@@ -123,7 +171,7 @@ beta = 0.5</code></pre>
         <p><strong>Example Usage:</strong></p>
         <pre><code>papermill input_notebook.ipynb output_notebook.ipynb --log-output</code></pre>
         
-        <h3>5. Integration with Data Pipelines</h3>
+        <i><h4>5. Integration with Data Pipelines</h4></i>
         <p><strong>What it does:</strong> Papermill integrates with workflow orchestration tools like Apache Airflow, Kubeflow, and AWS Step Functions.</p>
         <p><strong>How it works:</strong> It allows notebooks to be treated as reusable components in larger data pipelines.</p>
         <p><strong>Why it's useful:</strong></p>
@@ -133,7 +181,7 @@ beta = 0.5</code></pre>
             <li>Works well with CI/CD pipelines in machine learning.</li>
         </ul>
         
-        <h3>6. Storage and Remote Execution</h3>
+        <i><h4>6. Storage and Remote Execution</h4></i>
         <p><strong>What it does:</strong> Papermill supports reading and writing notebooks from various storage systems and executing notebooks on remote servers.</p>
         <p><strong>How it works:</strong> It can read and write notebooks from:</p>
         <ul>
@@ -157,7 +205,7 @@ beta = 0.5</code></pre>
         <p><strong>Example Usage:</strong></p>
         <pre><code>papermill s3://my-bucket/input_notebook.ipynb s3://my-bucket/output_notebook.ipynb</code></pre>
        
-        <h3>7. Output and Result Management</h3>
+        <i><h4>7. Output and Result Management</h4></i>
         <p><strong>What it does:</strong> Papermill saves executed notebooks with results and outputs.</p>
         <p><strong>How it works:</strong> After execution, the modified notebook is stored with:</p>
         <ul>
@@ -178,29 +226,31 @@ beta = 0.5</code></pre>
 
         Firstly ensure you have papermill installed by running the following command in your terminal:
         <pre><code>pip install papermill</code></pre>
-
+<br>
         Now create a jupyter notebook and import papermill as shown below:
         <script src="https://gist.github.com/guransh0925/f121e10b1afa9b007d8ea3abb4124b04.js"></script>
-
+<br>
         Next, create a cell in the notebook and tag it as "parameters" to define the variables you want to parameterize:
         <script src="https://gist.github.com/guransh0925/074bce84ee609eebdd0cfbf72fd0ad21.js"></script>
-
+<br>
         Write the main code in the notebook, using the parameters defined earlier, for example:
         <script src="https://gist.github.com/guransh0925/62e4aef52b94209f2d91ce4b482efb0f.js"></script>
-
+<br>
         Add this code at the end of your notebook to log all different parameter values and the results obtained into one CSV file. This is done because the output notebook will be overwritten and will only contain the last executed parameters.
         <script src="https://gist.github.com/guransh0925/250c1b51f6f9a08aa0266329c66d2d9e.js"></script>
-
+<br>
         Create an output notebook and then finally, execute the input notebook with different parameter values by running the following command in your terminal:
         <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p alpha {value1} -p beta {value2}</code></pre>
-
-        Attached below are screenshots of what our output notebook and CSV file will look like after running the commands:
+<br>
+        Attached below are screenshots of what your output notebook and CSV file will look like after running the commands:
         <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p alpha 1 -p beta 1</code></pre>
         <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p alpha 2 -p beta 2</code></pre>
         <pre><code>papermill input_notebook.ipynb output_notebook.ipynb -p alpha 3 -p beta 3</code></pre>
-        
-        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/output_nb.png" alt="Output Notebook" width="500" height="300">
-        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/executionlog.png" alt="Execution Log" width="500" height="300">
+        <br><i><p>Output Notebook</p></i>
+        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/output_nb.png" alt="Output Notebook" style="width: 80%; height: auto;">
+        <br>
+        <i><p>CSV File</p></i>
+        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/executionlog.png" alt="Execution Log" style="width: 80%; height: auto;">
 
     </section>
     
@@ -208,28 +258,28 @@ beta = 0.5</code></pre>
         <h2>Screenshots</h2>
         <p>Below are some screenshots to illustrate key functionalities of Papermill.</p>
     
-        <h3>Running Papermill in Command Line</h3>
+        <i><h4>1. Running Papermill in Command Line</h4></i>
         <p>Input Notebook: papermill_demo.ipynb</p>
         <p>Output Notebook: output_notebook.ipynb</p>
         <p>Parameters: alpha, beta</p>
 
-        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/papermill-cli.png" alt="CLI" width="500" height="300">
+        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/papermill-cli.png" alt="CLI">
         <p>This shows Papermill executing a Jupyter Notebook with parameters.</p>
     
-        <h3>Viewing Execution Metadata</h3>
-        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/notebook-metadata.png" alt="Notebook metadata" width="500" height="300">
+        <i><h4>2. Viewing Execution Metadata</h4></i>
+        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/notebook-metadata.png" alt="Notebook metadata">
         <p>Papermill automatically logs execution details for tracking and debugging.</p>
     
-        <h3>Example: Parameterization of Notebooks</h3>
-        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/parameter-cell.png" alt="Output Notebook" width="500" height="300">
+        <i><h4>3. Parameterization of Notebooks</h4></i>
+        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/parameter-cell.png" alt="Output Notebook">
         <p>This shows a Jupyter Notebook cell tagged as "parameters" with variables defined.</p>
     
-        <h3>Error Handling and Checkpointing</h3>
-        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/error-handling.png" alt="Error Handling" width="500" height="300">
+        <i><h4>4. Error Handling and Checkpointing</h4></i>
+        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/error-handling.png" alt="Error Handling" >
         <p>This shows a notebook with an error during execution and the cells executed up to the failure point.</p>
     
-        <h3>Example: Output and Result Management</h3>
-        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/output_nb.png" alt="Output Notebook" width="500" height="300">
+        <i><h4>5. Output and Result Management</h4></i>
+        <img src="https://raw.githubusercontent.com/guransh0925/papermill-blog/main/images/output_nb.png" alt="Output Notebook">
         <p>This shows an executed notebook with updated parameter values and outputs.</p>
     </section>
     
